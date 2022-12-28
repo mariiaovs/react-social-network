@@ -1,0 +1,49 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+    padding: 10px;    
+}
+
+.messages {
+    padding: 10px;;
+}
+
+
+.dialogsItems .active {
+    color: green;
+}
+
+.dialogs .messages {
+    color: white;
+}
+
+.dialog a {
+    color: white;
+    position: absolute;
+    margin: 10px;
+}
+
+.dialog img {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.textarea button {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: lightblue;
+}
+
+.textarea textarea {
+    width: 900px;
+    height: 200px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
