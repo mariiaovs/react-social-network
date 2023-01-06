@@ -12,14 +12,14 @@ import classes from './App.module.css';
 
 
 const App = (props) => {
-
+  debugger;
   return (
 
     <div className='app-wrapper'>
       <Header />
       <div className={classes.side}>
         <Navbar />
-        <Sidebar state={props.state.sideBar} />
+        <Sidebar sidebar={props.state.sidebar} />
       </div>
       <div className='app-wrapper-content'>
         <Routes>

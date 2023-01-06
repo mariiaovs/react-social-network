@@ -13,6 +13,7 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
     
     let addMessage = () => {
+        debugger;
         props.dispatch(addMessageActionCreator());
     }
 
