@@ -10,12 +10,12 @@ const MyPosts = (props) => {
   let newPostElement = props.newPostText;
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator());
+    props.addPost();
   }
 
-  let onPostChange = (e) => {
-    let text = e.target.value;
-    props.dispatch(updateNewPostActionCreator(text));
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewPostText(text);
   }
 
   return (
