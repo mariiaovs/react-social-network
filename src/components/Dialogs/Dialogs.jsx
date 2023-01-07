@@ -10,10 +10,9 @@ const Dialogs = (props) => {
 
     let dialogsElements = props.dialogsPage.dialogsData.map ( dialog => <DialogItem id={dialog.id} name={dialog.name} img={dialog.img} />);
 
-    let newMessageElement = React.createRef();
+    let newMessageElement = props.dialogsPage.newMessageText;
     
     let addMessage = () => {
-        debugger;
         props.dispatch(addMessageActionCreator());
     }
 
@@ -31,9 +30,8 @@ const Dialogs = (props) => {
                 { messagesElements }
             </div>
             <div className={classes.textarea}>
-                <textarea ref={ newMessageElement }
-                          onChange={onMessageChange}
-                          value={props.dialogsPage.newMessageText} />
+                <textarea onChange={onMessageChange}
+                          value={newMessageElement} />
                 <button onClick = { addMessage }>Send message</button>
             </div>
         </div>

@@ -6,3 +6,8 @@
 .descriptionBlock {
   padding: 10px;
 }
+
+.bigImage img {
+  width: 1300px;
+  height: 200px;
+}

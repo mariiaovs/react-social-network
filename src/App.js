@@ -12,7 +12,6 @@ import classes from './App.module.css';
 
 
 const App = (props) => {
-  debugger;
   return (
 
     <div className='app-wrapper'>
