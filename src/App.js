@@ -18,12 +18,12 @@ const App = (props) => {
       <Header />
       <div className={classes.side}>
         <Navbar />
-        <Sidebar sidebar={props.state.sidebar} />
+        <Sidebar />
       </div>
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path="/dialogs/*" element={<DialogsContainer store={props.store} />} />
-          <Route path="/profile" element={<Profile store={props.store} />} />
+          <Route path="/dialogs/*" element={<DialogsContainer />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />
           <Route path="/friends" element={<Friends />} />

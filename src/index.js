@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import StoreContext, { Provider } from './StoreContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -13,8 +14,9 @@ export let rerenderEntireTree = (state) => {
 root.render(
   <BrowserRouter>
     <React.StrictMode>
-      <App store={store} state={state}
-      dispatch={store.dispatch.bind(store)} />
+      <Provider store={store}>
+      <App />
+      </Provider>
     </React.StrictMode>
   </BrowserRouter>
 );
