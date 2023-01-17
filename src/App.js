@@ -5,10 +5,10 @@ import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
-import Sidebar from './components/Sidebar/Sidebar';
 import Friends from './components/Friends/Friends';
 import classes from './App.module.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import SidebarContainer from './components/Sidebar/SidebarContainer';
 
 
 const App = (props) => {
@@ -18,7 +18,7 @@ const App = (props) => {
       <Header />
       <div className={classes.side}>
         <Navbar />
-        <Sidebar />
+        <SidebarContainer />
       </div>
       <div className='app-wrapper-content'>
         <Routes>
