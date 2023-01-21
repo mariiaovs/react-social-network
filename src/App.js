@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
@@ -9,6 +10,7 @@ import Friends from './components/Friends/Friends';
 import classes from './App.module.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import SidebarContainer from './components/Sidebar/SidebarContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 const App = (props) => {
@@ -27,7 +29,7 @@ const App = (props) => {
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />
           <Route path="/friends" element={<Friends />} />
-          <Route path="/users" element={<div>Users</div>} />
+          <Route path="/users" element={<UsersContainer />} />
         </Routes>
       </div>
     </div>
