@@ -11,13 +11,20 @@ import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
+<<<<<<< Updated upstream
   <BrowserRouter>
     <React.StrictMode>
+=======
+  <React.StrictMode>
+>>>>>>> Stashed changes
       <Provider store={store}>
         <App />
       </Provider>
     </React.StrictMode>
+<<<<<<< Updated upstream
   </BrowserRouter>
+=======
+>>>>>>> Stashed changes
 );
 
 
