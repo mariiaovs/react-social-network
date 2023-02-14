@@ -1,15 +1,22 @@
 import classes from './ProfileInfo.module.css';
+import Preloader from '../../common/Preloader/Preloader.jsx';
 
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />
+  }
+
+
   return (
     <div>
       <div className={classes.bigImage}>
         <img src='https://images.unsplash.com/photo-1556139930-c23fa4a4f934?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'></img>
       </div>
       <div className={classes.descriptionBlock}>
-        <img className={classes.avatar} src="https://www.rnd.de/resizer/txuyjSWeLwrLvpvoSrVsqimT3Og=/1441x1441/filters:quality(70)/cloudfront-eu-central-1.images.arcpublishing.com/madsack/LS7TMAQ2JFCDVF3HVHNNCW7HDU.jpeg"></img>
-        <div>description</div>
+        <img className={classes.avatar} src={props.profile.photos.large}></img>
+        <div>{props.profile.fullName}</div>
+        <div>{props.profile.aboutMe}</div>
       </div>
     </div>
   )
