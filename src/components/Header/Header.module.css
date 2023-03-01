@@ -8,3 +8,13 @@ header img {
     grid-area: h;
     background-color: rgb(239, 112, 140);
 }
+
+.loginBlock {
+    float: right;
+    margin-right: 10px; 
+}
+
+.loginBlock a {
+    color: white;
+    padding: 10px;        
+}
