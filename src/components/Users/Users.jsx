@@ -27,29 +27,32 @@ let Users = (props) => {
                     <span>
                         <div>
                             <NavLink to={'/profile/' + u.id}>
-                                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={classes.userPhoto} />
+                                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={classes.userPhoto} alt="User" />
                             </NavLink>
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => {
-
+                                ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    props.toggleFollowingInProgress(true, u.id);
                                     usersAPI.unfollowUser(u.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 props.unfollow(u.id);
                                             }
+                                            props.toggleFollowingInProgress(false, u.id);
                                         });
 
                                 }}>Unfollow</button>
 
-                                : <button onClick={() => {
-
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    
+                                    props.toggleFollowingInProgress(true, u.id);
                                     usersAPI.followUser(u.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 props.follow(u.id);
                                             }
+                                            props.toggleFollowingInProgress(false, u.id);
                                         });
 
                                 }}>Follow</button>}
