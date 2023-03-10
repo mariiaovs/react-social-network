@@ -38,3 +38,12 @@ export const profileAPI = {
             });
     }  
 }
+
+export const headerAPI = {
+    authorise() {
+        return instance.get(`auth/me`)
+            .then(response => {
+                return response.data;
+            });
+    }  
+}
