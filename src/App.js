@@ -11,6 +11,7 @@ import SidebarContainer from './components/Sidebar/SidebarContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 
 
 const App = (props) => {
@@ -31,6 +32,7 @@ const App = (props) => {
           <Route path="/news" element={<News />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/users" element={<UsersContainer />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>
