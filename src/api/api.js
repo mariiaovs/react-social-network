@@ -48,5 +48,11 @@ export const headerAPI = {
             .then(response => {
                 return response.data;
             });
-    }  
+    },
+    login() {
+        return instance.get(`/auth/login`)
+            .then(response => {
+                return response.data;
+            });
+    }    
 }

@@ -4,6 +4,7 @@ import dialogsReducer from "./dialogs-reducer";
 import profileReducer from "./profile-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import usersReducer from './users-reducer';
+import { reducer as formReducer } from 'redux-form';
 
 let store = configureStore(
     {
@@ -12,7 +13,8 @@ let store = configureStore(
             dialogsPage: dialogsReducer,
             usersPage: usersReducer,
             sidebar: sidebarReducer,
-            auth: authReducer
+            auth: authReducer,
+            form: formReducer
         }
     }
 );
