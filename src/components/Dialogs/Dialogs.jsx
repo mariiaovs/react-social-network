@@ -3,38 +3,44 @@ import classes from './Dialogs.module.css';
 import Message from './Message/Message';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
+
+
+const DialogForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <div>
+            <Field placeholder={"Your message"} name={"newDialogMessage"} component={"textarea"} />
+        </div>
+        <div>
+            <button>Send message</button>
+        </div>
+    </form>
+}
+
+const DialogReduxForm = reduxForm({ form: 'dialogMessage' })(DialogForm);
 
 const Dialogs = (props) => {
 
-    let messagesElements = props.dialogsPage.messagesData.map ( message => <Message message={message.message} />);
+    let messagesElements = props.dialogsPage.messagesData.map(message => <Message message={message.message} />);
 
-    let dialogsElements = props.dialogsPage.dialogsData.map ( dialog => <DialogItem id={dialog.id} name={dialog.name} img={dialog.img} />);
+    let dialogsElements = props.dialogsPage.dialogsData.map(dialog => <DialogItem id={dialog.id} name={dialog.name} img={dialog.img} />);
 
     let newMessageElement = props.dialogsPage.newMessageText;
-    
-    let addMessage = () => {
-        props.addMessage();
+
+    const addNewMessage = (values) => {
+        props.addMessage(values.newDialogMessage);
     }
 
-    let onMessageChange = (e) => {
-        let text = e.target.value;        
-        props.updateNewMessageText(text);
-    }  
-
-    if (!props.isAuth) return <Navigate to="/login" />;
-  
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                { dialogsElements }                
+                {dialogsElements}
             </div>
             <div className={classes.messages}>
-                { messagesElements }
+                {messagesElements}
             </div>
             <div className={classes.textarea}>
-                <textarea onChange={onMessageChange}
-                          value={newMessageElement} />
-                <button onClick = { addMessage }>Send message</button>
+                <DialogReduxForm onSubmit={addNewMessage} />                
             </div>
         </div>
     )
