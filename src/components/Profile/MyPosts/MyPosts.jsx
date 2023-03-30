@@ -28,8 +28,7 @@ const MyPosts = (props) => {
 
   let newPostElement = React.createRef();
 
-  const addNewPost = (values) => {
-    debugger;
+  const addNewPost = (values) => {   
     props.addPost(values.newPost);
 }
 
