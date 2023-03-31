@@ -17,8 +17,7 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.payload,
-                isAuth: true
+                ...action.payload
             }
         default:
             return state;
@@ -32,7 +31,8 @@ export const authorise = () => {
         .then(data => {
             if (data.resultCode === 0) {
                 let { id, login, email } = data.data;
-                dispatch(setAuthUserData(id, login, email, true));
+                debugger;
+                dispatch(setAuthUserData(id, login, email, true));                
             }
 
         });

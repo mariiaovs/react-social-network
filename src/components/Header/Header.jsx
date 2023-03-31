@@ -9,7 +9,7 @@ const Header = (props) => {
             <div className={classes.loginBlock}>
                 {props.isAuth ? 
                 <div>
-                    <div>{props.login}</div>
+                    <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
                     {/* <img src={props.profile.photos.small} /> */}
                 </div>
                 :<NavLink to={'/login'}>Login</NavLink>}
