@@ -26,17 +26,15 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const authorise = () => {
-    return (dispatch) => {
-        headerAPI.authorise()
+export const authorise = () => (dispatch) => {    
+        return headerAPI.authorise()
         .then(data => {
             if (data.resultCode === 0) {
                 let { id, login, email } = data.data;                
                 dispatch(setAuthUserData(id, login, email, true));                
             }
 
-        });
-    }
+        });         
 }
 
 export const login = (email, password, rememberMe) => (dispatch) => {    
@@ -48,7 +46,7 @@ export const login = (email, password, rememberMe) => (dispatch) => {
                 let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
                 dispatch(stopSubmit("login", {_error: message}))
             }
-        });    
+        });          
 }
 
 export const logout = () => (dispatch) => {    

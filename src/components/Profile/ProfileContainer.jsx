@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { compose } from 'redux';
 
-function withRouter(Component) {
+export function withRouter(Component) {
   function ComponentWithRouterProp(props) {
     let location = useLocation();
     let navigate = useNavigate();
@@ -32,8 +32,11 @@ class ProfileContainer extends React.Component {
 
     let userId = this.props.router.params.userId;
 
-    if (!userId) {
+    if (!userId) {      
       userId = this.props.loggedInUserId;
+    }
+    if (!userId) {
+      this.props.router.navigate('/login');
     }
 
     this.props.getProfile(userId);
