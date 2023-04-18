@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { follow, getUsers, setCurrentPage, toggleFollowingInProgress, unfollow } from '../../Redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
+import { getAllUsers, getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount } from '../../Redux/users-selectors';
 
 
 
@@ -11,33 +12,14 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
-
-        /* this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-
-            .then(data => {
-
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsersCount(data.totalCount);
-            }); */
+        
     }
 
     onPageChange = (pageNumber) => {
 
         this.props.setCurrentPage(pageNumber);
-        this.props.getUsers(pageNumber, this.props.pageSize);
-
-        /*         
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-            }); */
+        this.props.getUsers(pageNumber, this.props.pageSize);    
+        
     }
 
     render() {
@@ -57,7 +39,7 @@ class UsersContainer extends React.Component {
 }
 
 
-let mapStateToProps = (state) => {
+/* let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
@@ -65,6 +47,17 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress
+    }
+} */
+
+let mapStateToProps = (state) => {
+    return {
+        users: getAllUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
 
