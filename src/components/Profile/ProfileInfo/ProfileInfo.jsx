@@ -1,6 +1,7 @@
 import classes from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader.jsx';
 import ProfileStatus from './ProfileStatus.jsx'
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 
 const ProfileInfo = (props) => {
@@ -20,7 +21,7 @@ const ProfileInfo = (props) => {
         <div>{props.profile.aboutMe}</div>
         <div>
           { props.profile.lookingForAJob ? <div>I'm looking for a job: {props.profile.lookingForAJobDescription}</div> : <div></div> }
-          <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+          <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
         </div>
       </div>
     </div>
