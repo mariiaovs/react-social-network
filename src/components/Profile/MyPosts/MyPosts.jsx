@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 import { Field, reduxForm } from 'redux-form';
@@ -10,7 +10,7 @@ const MyPostForm = (props) => {
   return <form form onSubmit={props.handleSubmit}>
     <div>
       <Field placeholder={"Your post"} name={"newPost"} component={Textarea}
-             validate={ [required, maxLengthCreator(10)] } />
+        validate={[required, maxLengthCreator(10)]} />
     </div>
     <div>
       <button>Add post</button>
@@ -19,29 +19,30 @@ const MyPostForm = (props) => {
 }
 
 
-const MyPostReduxForm = reduxForm({ form: 'ProfileNewPost' }) (MyPostForm);
+const MyPostReduxForm = reduxForm({ form: 'ProfileNewPost' })(MyPostForm);
 
+const MyPosts = React.memo((props) => {  
+  console.log("render");
+    
+    let postsElements = props.postsData.map(post => <Post message={post.message} likesCount={post.likesCount} />);
 
-const MyPosts = (props) => {
+    let newPostElement = React.createRef();
 
-  let postsElements = props.profilePage.postsData.map(post => <Post message={post.message} likesCount={post.likesCount} />);
+    const addNewPost = (values) => {
+      props.addPost(values.newPost);
+    }
 
-  let newPostElement = React.createRef();
-
-  const addNewPost = (values) => {   
-    props.addPost(values.newPost);
-}
-
-  return (
-    <div className={classes.postsBlock}>
-      <h3>My posts</h3>
-      <MyPostReduxForm onSubmit={addNewPost} />      
-      <div className={classes.posts}>
-        {postsElements}
+    return (
+      <div className={classes.postsBlock}>
+        <h3>My posts</h3>
+        <MyPostReduxForm onSubmit={addNewPost} />
+        <div className={classes.posts}>
+          {postsElements}
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  });
+
 
 
 export default MyPosts;
