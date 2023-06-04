@@ -46,7 +46,7 @@ export const headerAPI = {
     authorise() {
         return instance.get(`auth/me`)
             .then(response => {
-                return response.data;
+                return response;
             });
     },
     login(email, password, rememberMe = false) {

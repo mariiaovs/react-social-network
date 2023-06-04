@@ -87,48 +87,43 @@ export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isF
 export const toggleFollowingInProgress = (isFetching, userId) => ({ type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId })
 
 export const getUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(toggleIsFetching(true));
 
-        usersAPI.getUsers(currentPage, pageSize)
+        let data = await usersAPI.getUsers(currentPage, pageSize)
 
-            .then(data => {
-
-                dispatch(toggleIsFetching(false));
-                dispatch(setUsers(data.items));
-                dispatch(setTotalUsersCount(data.totalCount));
-            });
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
     }
 }
 
 export const follow = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(toggleFollowingInProgress(true, id));
 
-        usersAPI.followUser(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(followSuccess(id));
-                }
-                dispatch(toggleFollowingInProgress(false, id));
-            });
+        let data = await usersAPI.followUser(id);
+
+        if (data.resultCode === 0) {
+            dispatch(followSuccess(id));
+        }
+        dispatch(toggleFollowingInProgress(false, id));
     }
 }
 
 export const unfollow = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(toggleFollowingInProgress(true, id));
 
-        usersAPI.unfollowUser(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(unfollowSuccess(id));
-                }
-                dispatch(toggleFollowingInProgress(false, id));
-            });
+        let data = await usersAPI.unfollowUser(id);
+
+        if (data.resultCode === 0) {
+            dispatch(unfollowSuccess(id));
+        }
+        dispatch(toggleFollowingInProgress(false, id));
     }
 }
 
