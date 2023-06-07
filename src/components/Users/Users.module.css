@@ -16,11 +16,6 @@ h1 {
     color: rgb(16, 102, 51)
 }
 
-.selectedPage {
-    font-weight: 700;
-    color: red;
-}
-
 .usersContainer {
     display: flex;
     flex-wrap: wrap;

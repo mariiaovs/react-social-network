@@ -1,0 +1,9 @@
+.selectedPage {
+    font-weight: 700;
+    color: red;
+}
+
+.pagesContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
